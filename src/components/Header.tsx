@@ -37,13 +37,13 @@ const Header = () => {
             </div>
             {mobileMenuOpen && (
               <div className="fixed inset-0 top-16 bg-white z-40 px-4 py-6 flex flex-col space-y-6">
-                <a href="#comunicaciones" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
-                  {t('nav.comunicaciones')}
+                <a href="https://bdrinformatica.com" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
+                  BDR Informática
                 </a>
-                <a href="#odoo" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
+                <a href="https://odooandorra.com" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
                   {t('nav.odoo')}
                 </a>
-                <a href="#ski" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
+                <a href="https://skisolution360.com" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
                   {t('nav.ski')}
                 </a>
                 <a href="#contacto" className="text-lg font-medium" onClick={() => setMobileMenuOpen(false)}>
@@ -59,13 +59,13 @@ const Header = () => {
           <div className="flex items-center gap-6">
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuLink href="#comunicaciones" className={navigationMenuTriggerStyle()}>
-                  {t('nav.comunicaciones')}
+                <NavigationMenuLink href="https://bdrinformatica.com" className={navigationMenuTriggerStyle()}>
+                  BDR Informática
                 </NavigationMenuLink>
-                <NavigationMenuLink href="#odoo" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="https://odooandorra.com" className={navigationMenuTriggerStyle()}>
                   {t('nav.odoo')}
                 </NavigationMenuLink>
-                <NavigationMenuLink href="#ski" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="https://skisolution360.com" className={navigationMenuTriggerStyle()}>
                   {t('nav.ski')}
                 </NavigationMenuLink>
               </NavigationMenuList>
