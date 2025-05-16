@@ -12,6 +12,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Index = () => {
   const { language, t } = useLanguage();
   
+  const getPageTitle = () => {
+    switch (language) {
+      case 'ca':
+        return 'BDR Group - Tecnologia que connecta, gestiona i transforma';
+      case 'en':
+        return 'BDR Group - Technology that connects, manages and transforms';
+      case 'fr':
+        return 'BDR Group - Technologie qui connecte, gère et transforme';
+      default:
+        return 'BDR Group - Tecnología que conecta, gestiona y transforma';
+    }
+  };
+  
   const getMetaDescription = () => {
     switch (language) {
       case 'ca':
@@ -28,12 +41,7 @@ const Index = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Helmet>
-        <title>
-          {language === 'es' && 'BDR Group - Tecnología que conecta, gestiona y transforma'}
-          {language === 'ca' && 'BDR Group - Tecnologia que connecta, gestiona i transforma'}
-          {language === 'en' && 'BDR Group - Technology that connects, manages and transforms'}
-          {language === 'fr' && 'BDR Group - Technologie qui connecte, gère et transforme'}
-        </title>
+        <title>{getPageTitle()}</title>
         <meta name="description" content={getMetaDescription()} />
         <meta name="keywords" content="BDR Group, tecnología, Odoo, comunicaciones, ski, Andorra, España, Spain" />
         <meta name="geo.region" content="ES, AD" />
