@@ -15,7 +15,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/ed0682f8-1b3a-4521-9a5d-e15e05530804.png" 
                 alt="BDR Group Logo" 
-                className="h-10 invert"
+                className="h-10 brightness-0 invert"
               />
             </div>
             <p className="mb-4 text-gray-300 max-w-md">
