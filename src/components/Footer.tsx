@@ -1,43 +1,51 @@
 
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-[#091633] text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">BDR Group</h3>
+            <div className="flex items-center gap-4 mb-4">
+              <img 
+                src="/lovable-uploads/ed0682f8-1b3a-4521-9a5d-e15e05530804.png" 
+                alt="BDR Group Logo" 
+                className="h-10 invert"
+              />
+            </div>
             <p className="mb-4 text-gray-300 max-w-md">
-              Tecnología que conecta, gestiona y transforma. Soluciones tecnológicas integrales para empresas
-              que buscan innovación, eficiencia y crecimiento en la era digital.
+              {t('footer.description')}
             </p>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Servicios</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.services')}</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#comunicaciones" className="hover:text-[#e81f76] transition-colors">BDR Comunicaciones</a></li>
-              <li><a href="#odoo" className="hover:text-[#e81f76] transition-colors">BDR Odoo</a></li>
-              <li><a href="#ski" className="hover:text-[#e81f76] transition-colors">BDR Ski Solution</a></li>
+              <li><a href="#comunicaciones" className="hover:text-[#e81f76] transition-colors">{t('nav.comunicaciones')}</a></li>
+              <li><a href="#odoo" className="hover:text-[#e81f76] transition-colors">{t('nav.odoo')}</a></li>
+              <li><a href="#ski" className="hover:text-[#e81f76] transition-colors">{t('nav.ski')}</a></li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.contact')}</h4>
             <ul className="space-y-2 text-gray-300">
               <li>info@bdrinformatica.com</li>
               <li>+34 900 123 456</li>
               <li>Barcelona, España</li>
+              <li>Andorra la Vella, Andorra</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-gray-400">
-            © {currentYear} BDR Group. Todos los derechos reservados.
+            © {currentYear} BDR Group. {t('footer.rights')}
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-white">
