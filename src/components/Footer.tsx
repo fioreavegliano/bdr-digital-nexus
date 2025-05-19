@@ -14,9 +14,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-4 mb-4">
               <img 
-                src="/lovable-uploads/ed0682f8-1b3a-4521-9a5d-e15e05530804.png" 
+                src="/lovable-uploads/587e73b9-66cb-4960-9273-72cd8dec3f0b.png" 
                 alt="BDR Group Logo" 
-                className="h-10 brightness-0 invert"
+                className="h-16"
               />
             </div>
             <p className="mb-4 text-gray-300 max-w-md">
