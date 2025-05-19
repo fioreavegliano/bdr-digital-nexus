@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { NavigationMenu, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Menu } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/language';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {

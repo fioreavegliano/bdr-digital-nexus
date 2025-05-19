@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
@@ -7,7 +6,7 @@ import ServiceSection from '@/components/ServiceSection';
 import PartnersSection from '@/components/PartnersSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/language';
 
 const Index = () => {
   const { language, t } = useLanguage();
@@ -34,7 +33,7 @@ const Index = () => {
       case 'fr':
         return 'BDR Group propose des solutions technologiques complètes pour les entreprises en Andorre et en Espagne: connectivité, ERP Odoo et solutions pour les stations de ski.';
       default:
-        return 'BDR Group ofrece soluciones tecnológicas integrales para empresas en Andorra y España: conectividad, ERP Odoo y soluciones para estaciones de esquí.';
+        return 'BDR Group ofrece soluciones tecnológicas integrales para empresas en Andorra y España: connectividad, ERP Odoo y soluciones para estaciones de esquí.';
     }
   };
   

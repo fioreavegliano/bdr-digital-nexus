@@ -1,15 +1,8 @@
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+// All translations for our application organized by language
+export type Language = 'es' | 'ca' | 'en' | 'fr';
 
-type Language = 'es' | 'ca' | 'en' | 'fr';
-
-type LanguageContextType = {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: (key: string) => string;
-};
-
-const translations: Record<Language, Record<string, string>> = {
+export const translations: Record<Language, Record<string, string>> = {
   es: {
     // Navigation
     'nav.comunicaciones': 'BDR Comunicaciones',
@@ -254,28 +247,4 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.contact': 'Contact',
     'footer.rights': 'Tous droits réservés.',
   }
-};
-
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('es');
-
-  const t = (key: string): string => {
-    return translations[language][key] || key;
-  };
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
-};
-
-export const useLanguage = (): LanguageContextType => {
-  const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
-  }
-  return context;
 };
