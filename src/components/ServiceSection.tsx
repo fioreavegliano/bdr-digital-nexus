@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Network, Phone, Cctv, Database, Calendar, Smartphone } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServiceProps {
   id: string;
@@ -11,9 +12,12 @@ interface ServiceProps {
   icon: React.ReactNode;
   color: string;
   items: string[];
+  url: string;
 }
 
 const ServiceCard = ({ service }: { service: ServiceProps }) => {
+  const { t } = useLanguage();
+  
   return (
     <Card className="h-full flex flex-col transition-all duration-300 hover:shadow-lg">
       <CardHeader>
@@ -34,67 +38,75 @@ const ServiceCard = ({ service }: { service: ServiceProps }) => {
         </ul>
       </CardContent>
       <CardFooter>
-        <Button className="w-full bg-gradient-to-r from-[#091633] to-[#304375] hover:from-[#091633] hover:to-[#1a2851]">
-          Más información
+        <Button 
+          className="w-full bg-gradient-to-r from-[#091633] to-[#304375] hover:from-[#091633] hover:to-[#1a2851]"
+          onClick={() => window.open(service.url, '_blank')}
+        >
+          {t('service.more')}
         </Button>
       </CardFooter>
     </Card>
   );
 };
 
-const services = [
-  {
-    id: "comunicaciones",
-    title: "BDR Comunicaciones",
-    description: "Soluciones integrales de conectividad y comunicación para empresas",
-    color: "bg-[#091633]/10 text-[#091633]",
-    icon: <Network className="h-8 w-8" />,
-    items: [
-      "Infraestructura de redes y conectividad",
-      "Telefonía VoIP y comunicaciones unificadas",
-      "Sistemas de videovigilancia CCTV",
-      "Mantenimiento y soporte técnico",
-      "Soluciones de conectividad inalámbrica"
-    ]
-  },
-  {
-    id: "odoo",
-    title: "BDR Odoo",
-    description: "Gestión empresarial integral con el ERP Odoo personalizado para tu negocio",
-    color: "bg-[#e81f76]/10 text-[#e81f76]",
-    icon: <Database className="h-8 w-8" />,
-    items: [
-      "Consultoría e implementación de Odoo ERP",
-      "Desarrollo de módulos personalizados",
-      "Integración con sistemas existentes",
-      "Migración y actualización de versiones",
-      "Formación y soporte continuo"
-    ]
-  },
-  {
-    id: "ski",
-    title: "BDR Ski Solution",
-    description: "Software y hardware especializado para estaciones de esquí y montaña",
-    color: "bg-[#7e57c5]/10 text-[#7e57c5]",
-    icon: <Calendar className="h-8 w-8" />,
-    items: [
-      "Control de accesos para estaciones",
-      "Gestión de forfaits y reservas",
-      "Apps móviles personalizadas",
-      "Sistemas de información para visitantes",
-      "Integración con sistemas meteorológicos"
-    ]
-  }
-];
-
 const ServiceSection = () => {
+  const { t, language } = useLanguage();
+  
+  const services = [
+    {
+      id: "comunicaciones",
+      title: t('service.comunicaciones.title'),
+      description: t('service.comunicaciones.description'),
+      color: "bg-[#091633]/10 text-[#091633]",
+      icon: <Network className="h-8 w-8" />,
+      items: [
+        t('service.comunicaciones.item1'),
+        t('service.comunicaciones.item2'),
+        t('service.comunicaciones.item3'),
+        t('service.comunicaciones.item4'),
+        t('service.comunicaciones.item5')
+      ],
+      url: "https://bdrinformatica.com"
+    },
+    {
+      id: "odoo",
+      title: t('service.odoo.title'),
+      description: t('service.odoo.description'),
+      color: "bg-[#e81f76]/10 text-[#e81f76]",
+      icon: <Database className="h-8 w-8" />,
+      items: [
+        t('service.odoo.item1'),
+        t('service.odoo.item2'),
+        t('service.odoo.item3'),
+        t('service.odoo.item4'),
+        t('service.odoo.item5')
+      ],
+      url: "https://odooandorra.com"
+    },
+    {
+      id: "ski",
+      title: t('service.ski.title'),
+      description: t('service.ski.description'),
+      color: "bg-[#7e57c5]/10 text-[#7e57c5]",
+      icon: <Calendar className="h-8 w-8" />,
+      items: [
+        t('service.ski.item1'),
+        t('service.ski.item2'),
+        t('service.ski.item3'),
+        t('service.ski.item4'),
+        t('service.ski.item5')
+      ],
+      url: "https://skisolution360.com"
+    }
+  ];
+
   return (
     <section id="servicios" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Nuestros servicios</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('service.title')}</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Desarrollamos soluciones tecnológicas integrales adaptadas a las necesidades específicas de cada sector
+            {t('service.subtitle')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
