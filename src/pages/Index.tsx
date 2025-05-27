@@ -3,6 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
 import ServiceSection from '@/components/ServiceSection';
 import PartnersSection from '@/components/PartnersSection';
 import ContactSection from '@/components/ContactSection';
@@ -55,6 +56,7 @@ const Index = () => {
       <Header />
       <main className="flex-grow pt-16">
         <HeroSection />
+        <AboutSection />
         <ServiceSection />
         <PartnersSection />
         <ContactSection />
