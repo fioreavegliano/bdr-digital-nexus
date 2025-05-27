@@ -2,6 +2,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -40,6 +41,11 @@ const Footer = () => {
               <li>+34 900 123 456</li>
               <li>Barcelona, España</li>
               <li>Andorra la Vella, Andorra</li>
+              <li>
+                <Link to="/blog" className="hover:text-[#e81f76] transition-colors">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
