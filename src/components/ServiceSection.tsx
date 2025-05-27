@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Network, Phone, Cctv, Database, Calendar, Smartphone } from 'lucide-react';
+import { Network, Database, Calendar, Cloud, Shield, Megaphone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ServiceProps {
@@ -97,6 +97,51 @@ const ServiceSection = () => {
         t('service.ski.item5')
       ],
       url: "https://skisolution360.com"
+    },
+    {
+      id: "cloud",
+      title: t('service.cloud.title'),
+      description: t('service.cloud.description'),
+      color: "bg-blue-500/10 text-blue-600",
+      icon: <Cloud className="h-8 w-8" />,
+      items: [
+        t('service.cloud.item1'),
+        t('service.cloud.item2'),
+        t('service.cloud.item3'),
+        t('service.cloud.item4'),
+        t('service.cloud.item5')
+      ],
+      url: "https://bdrinformatica.com"
+    },
+    {
+      id: "tutum",
+      title: t('service.tutum.title'),
+      description: t('service.tutum.description'),
+      color: "bg-red-500/10 text-red-600",
+      icon: <Shield className="h-8 w-8" />,
+      items: [
+        t('service.tutum.item1'),
+        t('service.tutum.item2'),
+        t('service.tutum.item3'),
+        t('service.tutum.item4'),
+        t('service.tutum.item5')
+      ],
+      url: "https://tutumsec.com"
+    },
+    {
+      id: "nevola",
+      title: t('service.nevola.title'),
+      description: t('service.nevola.description'),
+      color: "bg-orange-500/10 text-orange-600",
+      icon: <Megaphone className="h-8 w-8" />,
+      items: [
+        t('service.nevola.item1'),
+        t('service.nevola.item2'),
+        t('service.nevola.item3'),
+        t('service.nevola.item4'),
+        t('service.nevola.item5')
+      ],
+      url: "https://nevola.es"
     }
   ];
 
