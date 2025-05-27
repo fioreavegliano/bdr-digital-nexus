@@ -1,19 +1,59 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/components/ui/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ContactSection = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { t } = useLanguage();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí iría la lógica de envío del formulario
-    toast({
-      title: "Formulario enviado",
-      description: "Nos pondremos en contacto contigo lo antes posible.",
-    });
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const contactData = {
+      nombre: formData.get('nombre') as string,
+      empresa: formData.get('empresa') as string || null,
+      email: formData.get('email') as string,
+      mensaje: formData.get('mensaje') as string,
+    };
+
+    try {
+      const { error } = await supabase
+        .from('contacto_bdrgroup')
+        .insert([contactData]);
+
+      if (error) {
+        console.error('Error inserting contact form:', error);
+        toast({
+          title: "Error",
+          description: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Formulario enviado",
+          description: "Nos pondremos en contacto contigo lo antes posible.",
+        });
+        // Reset form
+        e.currentTarget.reset();
+      }
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -59,26 +99,27 @@ const ContactSection = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="nombre">Nombre</Label>
-                    <Input id="nombre" placeholder="Tu nombre" required />
+                    <Input id="nombre" name="nombre" placeholder="Tu nombre" required />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="empresa">Empresa</Label>
-                    <Input id="empresa" placeholder="Nombre de la empresa" />
+                    <Input id="empresa" name="empresa" placeholder="Nombre de la empresa" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Correo electrónico</Label>
-                  <Input id="email" type="email" placeholder="tu@email.com" required />
+                  <Input id="email" name="email" type="email" placeholder="tu@email.com" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="mensaje">Mensaje</Label>
-                  <Textarea id="mensaje" placeholder="¿En qué podemos ayudarte?" className="min-h-[120px]" required />
+                  <Textarea id="mensaje" name="mensaje" placeholder="¿En qué podemos ayudarte?" className="min-h-[120px]" required />
                 </div>
                 <Button 
                   type="submit" 
+                  disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-[#7e57c5] to-[#e81f76] hover:from-[#6a49a6] hover:to-[#d41967]"
                 >
-                  Enviar mensaje
+                  {isSubmitting ? "Enviando..." : "Enviar mensaje"}
                 </Button>
               </form>
             </div>

@@ -105,6 +105,33 @@ export type Database = {
         }
         Relationships: []
       }
+      contacto_bdrgroup: {
+        Row: {
+          created_at: string
+          email: string
+          empresa: string | null
+          id: string
+          mensaje: string
+          nombre: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          empresa?: string | null
+          id?: string
+          mensaje: string
+          nombre: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          empresa?: string | null
+          id?: string
+          mensaje?: string
+          nombre?: string
+        }
+        Relationships: []
+      }
       contactos_ski_solution: {
         Row: {
           created_at: string
